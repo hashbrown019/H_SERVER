@@ -1,0 +1,76 @@
+[
+	{
+		"name": "Doctors Hospital",
+		"latlng": [
+			"8.9436117",
+			"125.5211322"
+		],
+		"data": [
+			{
+				"name": "Doctors Hospital",
+				"date_": "2021-06-23",
+				"ICU_Beds": "0,0",
+				"COVID_Ward_Beds": "0,0",
+				"Isolation_Beds": "0,0",
+				"ICU_Beds_for_Non_COVID": "0,0",
+				"Non_ICU_Beds_for_Non_COVID": "0,0"
+			},
+			{
+				"name": "Doctors Hospital",
+				"date_": "2021-06-23",
+				"ICU_Beds": "0,0",
+				"COVID_Ward_Beds": "0,0",
+				"Isolation_Beds": "0,0",
+				"ICU_Beds_for_Non_COVID": "0,0",
+				"Non_ICU_Beds_for_Non_COVID": "0,0"
+			}
+		],
+		"logs": []
+	},
+	{
+		"name": "praaah",
+		"latlng": [
+			"12",
+			"23"
+		],
+		"data": [],
+		"logs": []
+	},
+	{
+		"name": "Manuel Santos",
+		"latlng": [
+			"8.9466899",
+			"125.5407986"
+		],
+		"data": [
+			{
+				"name": "Manuel Santos",
+				"date_": "2021-06-16",
+				"ICU_Beds": "1,1",
+				"COVID_Ward_Beds": "0,0",
+				"Isolation_Beds": "0,0",
+				"ICU_Beds_for_Non_COVID": "0,0",
+				"Non_ICU_Beds_for_Non_COVID": "9,4"
+			},
+			{
+				"name": "Manuel Santos",
+				"date": "2021-06-18",
+				"ICU_Beds": "1,1",
+				"COVID_Ward_Beds": "30,20",
+				"Isolation_Beds": "0,0",
+				"ICU_Beds_for_Non_COVID": "13,2",
+				"Non_ICU_Beds_for_Non_COVID": "9,4"
+			},
+			{
+				"name": "Manuel Santos",
+				"date": "2021-06-14",
+				"ICU_Beds": "1,1",
+				"COVID_Ward_Beds": "30,20",
+				"Isolation_Beds": "0,0",
+				"ICU_Beds_for_Non_COVID": "13,2",
+				"Non_ICU_Beds_for_Non_COVID": "9,4"
+			}
+		],
+		"logs": []
+	}
+]

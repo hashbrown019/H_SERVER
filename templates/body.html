@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	{% include 'head.html' %}
+	<body>
+		<div class="x-col s2 m2 l2 x-container">&nbsp;</div>
+		<div class="x-col s3 m3 l3 x-container x-padding">
+			<br><br><br>
+			<div class="x-round-large x-white x-card x-container x-padding">
+				<div class="x-row">
+					<h2 class="x-text-blue">Input Hospital name</h2>
+					<input class="newhospitalinfo x-input x-border" type="" name="">
+				</div><br>
+				<div class="x-row x-container">
+					<span>Input Coorinates <span class="x-text-grey x-small">[lng,lat]</span></span>
+					<div class="x-row">
+						<input class="newhospitalinfo x-half x-input x-border x-round-large" type="number" name="" placeholder="Longlitude">
+						<input class="newhospitalinfo x-half x-input x-border x-round-large" type="number" name="" placeholder="Latitude">
+					</div>
+				</div>
+				<div class="x-container x-padding x-center">
+					<button class="x-btn x-round-large x-blue" onclick="addhospital()">
+						Add Hospital
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="x-col s5 m5 l5 x-container x-padding">
+			<br><br><br>
+			<div class="x-round-large x-white x-card x-container x-padding">
+				<div class="x-row x-container">
+					<h2 class="x-text-blue">Hospital Data</h2>
+					<select class="new_info x-select x-border" onchange="h_selected(this.value)">
+						<option selected disabled>Select Hospital</option>
+						{% for info in hospitals:%}
+							<option value="{{info.name}}">{{info.name}}</option>
+						{% endfor %}
+					</select>
+				</div><br>
+				<div class="x-row">
+					<span class="x-text-blue">Input hospital information <span class="x-text-grey x-small"># of Beds</span></span><br>
+					<div class="x-row x-container">
+						<div class="x-third x-padding">ICU Beds</div>
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="# of Beds">
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="Ocupied">
+					</div>
+					<div class="x-row x-container">
+						<div class="x-third x-padding">COVID Ward Beds</div>
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="# of Beds">
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="Ocupied">
+					</div>
+					<div class="x-row x-container">
+						<div class="x-third x-padding">Isolation Beds</div>
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="# of Beds">
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="Ocupied">
+					</div>
+					<div class="x-row x-container">
+						<div class="x-third x-padding">ICU Beds for Non COVID</div>
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="# of Beds">
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="Ocupied">
+					</div>
+					<div class="x-row x-container">
+						<div class="x-third x-padding">Non ICU Beds for Non COVID</div>
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="# of Beds">
+						<input class="new_info x-third x-input x-border x-round-large" type="number" value="0" placeholder="Ocupied">
+					</div>					
+					<div class="x-row x-container">
+						<hr>
+						<div class="x-containerf">
+							<span>Date</span>
+							<input class="new_info x-input x-border" type="date" name="">
+						</div>
+					</div>
+				</div>
+				<div class="x-container x-padding x-center">
+					<button class="x-btn x-round-large x-blue" onclick="push_info()">
+						Push Information
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="x-col s2 m2 l2 x-container">&nbsp;</div>
+	</body>
+	<script type="text/javascript">
+
+		function push_info(){
+			nums = $CLASS("new_info")
+			info = {
+				"name": nums[0].value ,
+				"date_": nums[11].value ,
+				"ICU_Beds": [
+					nums[1].value,
+					nums[2].value
+				],
+				"COVID_Ward_Beds": [
+					nums[3].value,
+					nums[4].value
+				],
+				"Isolation_Beds": [
+					nums[5].value,
+					nums[6].value
+				],
+				"ICU_Beds_for_Non_COVID": [
+					nums[7].value,
+					nums[8].value
+				],
+				"Non_ICU_Beds_for_Non_COVID": [
+					nums[9].value,
+					nums[10].value
+				],
+			}
+			$print(info)
+			$send({
+				action : "/push_info",
+				method : "POST",
+				data : $DATA(info),
+				func : $print
+			})
+		}
+
+		function addhospital(){
+			newhospital = $CLASS("newhospitalinfo")
+			info = {"name": newhospital[0].value,"latlng" : [newhospital[1].value,newhospital[2].value]}
+
+			$send({
+				action : "/add_hospital",
+				data : $DATA(info),
+				methods : "POST",
+				func : $print
+			})
+		}
+
+		function h_selected(res){
+			// alert(res)
+		}
+	</script>
+</html>
